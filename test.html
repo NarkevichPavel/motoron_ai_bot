@@ -1,0 +1,118 @@
+C:\Users\USER\PycharmProjects\pythonProject\.venv\Scripts\python.exe C:\Users\USER\PycharmProjects\motoron_ai_bot\test.py
+<style>
+#modal_content{min-width:500px;}
+.quantityModal form div{display:flex; }
+.quantityModal form select{width:100%;}
+.quantityModal form input{margin-right:10px;}
+.quantityModal form input, .quantityModal form select, .quantityModal form button{height:32px;}
+</style>
+<script>
+    function reQ(id)
+    {
+    let q = $('.Element'+id+' .quantity button span').html();
+    let qEvents = $('#qEventSelect').val();
+    console.log(qEvents);
+    console.log(q);
+        if(qEvents > 0)
+        {
+            if(qEvents < 10)
+            {
+            q++;
+            }
+            else
+            {
+            q--;
+            }
+        }
+        if(q < 1)
+        {
+            $('.Element'+id).addClass('trZero');
+            $('.Element'+id).addClass('case');
+        }
+        else
+        {
+            $('.Element'+id).removeClass('trZero');
+            $('.Element'+id).removeClass('case');
+        }
+        $('.Element'+id+' .quantity button span').html(q);
+    }
+</script>
+    <h2>Учёт товара Фонарь крышки багажника левый<br>Volkswagen Passat B7 2014 84596454</h2>
+    <div>Остаток: 0шт.</div>
+
+    <div class="quantityModal">
+            <h3>Приход / Расход</h3>
+
+            <form action="/ajax/clubsAdmin/quantity.php?params=84596454" name="" method="POST" id="quantity84596454" onsubmit="reQ(84596454); ajaxForm('#quantity84596454'); return false;">
+
+
+            <div>
+                <input name="q" value="1" type="hidden">
+
+                <select name="qEvent" id="qEventSelect" onchange="if(this.value==1 || this.value==2){$('#priceUpdDate84596454').show();}else{$('#priceUpdDate84596454').hide();} if(this.value>10){$('#priceMotion84596454').show();}else{$('#priceMotion84596454').hide();}">
+                    <option value="0">-- выберите действие</option>
+                    <option value="1">+ Поступление</option>
+                    <option value="11">- Продажа</option>
+                    <option value="13">- Продажа (доставка)</option>
+                    <option value="14">- Бронь</option>
+                    <option value="12">- Списание</option><option value="2">+ Возврат</option></select>
+
+                <div class="flex-line" id="priceMotion84596454" style="display:none;">
+                    <select name="currency" style="width:70px; margin-left:10px;">
+                        <option value="BYN">BYN</option>
+                        <option value="USD" selected>USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="RUB">RUB</option>
+                    </select>
+                    <input type="text" name="price" value="10" style="width:70px; margin-left:10px; margin-right:0;">
+                </div>
+
+                <div class="flex-line" id="priceUpdDate84596454" style="display:none;">
+                    <select name="priceUpdDate" style="width:160px; margin-left:10px;">
+                        <option value="0">Не обновлять дату</option>
+                        <option value="1">Обновить дату</option>
+                    </select>
+                </div>
+
+            </div>
+            <div>
+                <input type="hidden" name="ajaxDiv" value="#modal_content">
+                <input autocomplete="off" name="comment" value="" type="text" placeholder="Примечание"  style="width:100%;">
+                <button>Ok</button>
+            </div>
+        </form>
+
+            <div class="tabelScroll">
+							<div>
+                        <table class="table">
+                            <tr>
+                                <td>Сотрудник
+                                <td>Дата
+                                <td>Действие
+                                <td>Цена
+                                <td>Примечание
+                                </tr><tr id="statusRow4294783">
+                        <td>Паша
+                        <td>2024-08-19
+                        <td><span id="status4294783">Продажа: 1шт.</span><td>10.0 USD
+                        <td><tr id="statusRow4288129">
+                        <td>Ип Кухарчик В.В.
+                        <td>2024-08-18
+                        <td><span id="status4288129">Поступление: 1шт.</span><td>10.0 USD
+                        <td><tr id="statusRow4288130">
+                        <td>Ип Кухарчик В.В.
+                        <td>2024-08-18
+                        <td><span id="status4288130">Внесены изменения</span><td>10.0
+                        <td>Изменена цена  4 => 10</table>
+            </div>
+            </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+Process finished with exit code 0
